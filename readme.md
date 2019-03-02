@@ -13,6 +13,10 @@ PLEASE UPDATE THE DB CONNECTION DETAILS BASED ON YOUR DB INFORMATION IN ```appli
 
 https://github.com/spring-projects/spring-integration/tree/master/spring-integration-jdbc/src/main/resources/org/springframework/integration/jdbc
 
+Docker Compose Tutorial to setup mysql db
+
+https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
+
 ### How to run 
 
 1. Clone this project

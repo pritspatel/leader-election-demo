@@ -1,30 +1,24 @@
 package com.prits.leaderelection.leader;
 
-import org.springframework.integration.leader.Candidate;
 import org.springframework.integration.leader.Context;
+import org.springframework.integration.leader.DefaultCandidate;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by priteshpatel on 3/2/19.
  */
-public class LeaderCandidate implements Candidate {
-    @Override
-    public String getRole() {
-        return null;
-    }
+@Component
+public class LeaderCandidate extends DefaultCandidate {
 
     @Override
-    public String getId() {
-        return null;
-    }
-
-    @Override
-    public void onGranted(Context context) throws InterruptedException {
+    public void onGranted(Context context) {
+        super.onGranted(context);
         System.out.println("*** Leadership granted ***");
     }
 
     @Override
     public void onRevoked(Context context) {
+        super.onRevoked(context);
         System.out.println("*** Leadership revoked ***");
     }
 }
