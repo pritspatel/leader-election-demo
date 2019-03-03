@@ -7,7 +7,7 @@
 
     <int-jdbc:inbound-channel-adapter
             id="jdbcPoller"
-            auto-startup="true"
+            auto-startup="false"
             channel="msgChannel"
             query="SELECT * FROM PROCESSING WHERE STATUS='READY'"
             data-source="dataSource"
