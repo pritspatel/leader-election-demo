@@ -1,14 +1,9 @@
 package com.prits.leaderelection.config;
 
+import com.prits.leaderelection.leader.LeaderCandidate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.core.MessageSource;
-import org.springframework.integration.dsl.IntegrationFlow;
-import org.springframework.integration.dsl.IntegrationFlows;
-import org.springframework.integration.dsl.MessageChannels;
-import org.springframework.integration.dsl.Pollers;
-import org.springframework.integration.endpoint.MethodInvokingMessageSource;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.integration.jdbc.lock.DefaultLockRepository;
 import org.springframework.integration.jdbc.lock.JdbcLockRegistry;
 import org.springframework.integration.jdbc.lock.LockRepository;
@@ -16,12 +11,12 @@ import org.springframework.integration.support.leader.LockRegistryLeaderInitiato
 import org.springframework.integration.support.locks.LockRegistry;
 
 import javax.sql.DataSource;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by priteshpatel on 3/2/19.
  */
 @Configuration
+@ImportResource({"classpath*:intg-ctx.xml"})
 public class LeaderConfig {
 
     @Bean
@@ -36,7 +31,7 @@ public class LeaderConfig {
 
     @Bean
     public LockRegistryLeaderInitiator leaderInitiator(LockRegistry lockRegistry) {
-        return new LockRegistryLeaderInitiator(lockRegistry);
+        return new LockRegistryLeaderInitiator(lockRegistry, new LeaderCandidate());
     }
 
     /*@Bean
