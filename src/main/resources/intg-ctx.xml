@@ -11,9 +11,10 @@
             channel="msgChannel"
             query="SELECT * FROM PROCESSING WHERE STATUS='READY'"
             data-source="dataSource"
-            max-rows="10"
+            max-rows-per-poll="1"
             update-per-row="true"
             update="UPDATE PROCESSING SET STATUS='PROCESSING'"
+            role="cluster"
     >
         <int:poller fixed-delay="2000">
 
@@ -24,7 +25,7 @@
 
 
     <int:channel id="systemMsgChannel"/>
-    <int:control-bus auto-startup="true" id="systemControlBus" input-channel="systemMsgChanne"/>
+    <int:control-bus auto-startup="true" id="systemControlBus" input-channel="systemMsgChannel"/>
     <!-- <int:channel id="busOutputChannel"/>
      <int:logging-channel-adapter id="busOutput" channel="busOutputChannel" level="INFO"/>-->
 </beans>
