@@ -12,7 +12,6 @@
             query="SELECT * FROM PROCESSING WHERE STATUS='READY'"
             data-source="dataSource"
             max-rows="10"
-            max-rows-per-poll="10"
             update-per-row="true"
             update="UPDATE PROCESSING SET STATUS='PROCESSING'"
     >
