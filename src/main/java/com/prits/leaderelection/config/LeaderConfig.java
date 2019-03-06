@@ -31,29 +31,11 @@ public class LeaderConfig {
 
     @Bean
     public LockRegistryLeaderInitiator leaderInitiator(LockRegistry lockRegistry) {
-        return new LockRegistryLeaderInitiator(lockRegistry, new LeaderCandidate());
-    }
-
-    /*@Bean
-    public MessageSource<?> integerMessageSource() {
-        MethodInvokingMessageSource source = new MethodInvokingMessageSource();
-        source.setObject(new AtomicInteger());
-        source.setMethodName("getAndIncrement");
-        return source;
+        return new LockRegistryLeaderInitiator(lockRegistry, leaderCandidate());
     }
 
     @Bean
-    public DirectChannel inputChannel() {
-        return new DirectChannel();
+    public LeaderCandidate leaderCandidate(){
+        return new LeaderCandidate();
     }
-
-    @Bean
-    public IntegrationFlow myFlow() {
-        return IntegrationFlows.from(integerMessageSource(), c -> c.poller(Pollers.fixedRate(100)))
-                .channel(this.inputChannel())
-                .filter((Integer p) -> p > 0)
-                .transform(Object::toString)
-                .channel(MessageChannels.queue())
-                .get();
-    }*/
 }
